@@ -9,7 +9,6 @@
 	</parent>
 	<groupId>br.com.codevelopment.manga</groupId>
 	<artifactId>common</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<name>common</name>
 	<description>Demo project for Spring Boot</description>
 
