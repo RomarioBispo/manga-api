@@ -24,6 +24,11 @@ public class UsuarioController {
 		this.usuarioService = usuarioService;
 	}
 	
+	@GetMapping("/hello")
+	public String hello() {
+		return "hello";
+	}
+	
 	@PostMapping
 	public Usuario create(@RequestBody Usuario usuario) {
 		return usuarioService.create(usuario);

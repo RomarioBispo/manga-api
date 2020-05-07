@@ -1,13 +1,13 @@
-package br.com.codevelopment.common;
+package br.com.codevelopment;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CommonApplication {
+public class ApiApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CommonApplication.class, args);
+		SpringApplication.run(ApiApplication.class, args);
 	}
 
 }
