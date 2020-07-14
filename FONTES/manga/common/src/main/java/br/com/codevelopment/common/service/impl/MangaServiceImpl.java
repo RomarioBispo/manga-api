@@ -6,7 +6,9 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import br.com.codevelopment.common.domain.entity.Manga;
+import br.com.codevelopment.common.domain.entity.Usuario;
 import br.com.codevelopment.common.domain.repository.MangaRepository;
+import br.com.codevelopment.common.error.ResourceNotFoundException;
 import br.com.codevelopment.common.service.contract.MangaService;
 
 @Service
@@ -24,6 +26,7 @@ public class MangaServiceImpl implements MangaService{
 
 	@Override
 	public Manga findById(Long id) {
+		verifyIfMangaExist(id);
 		return repository.findById(id).get();
 	}
 
@@ -34,6 +37,7 @@ public class MangaServiceImpl implements MangaService{
 
 	@Override
 	public void update(Long id, Manga manga) {
+		verifyIfMangaExist(id);
 		Optional<Manga> opt = repository.findById(id);
 		if (opt.isPresent()) {
 			Manga toSave = opt.get();
@@ -52,7 +56,15 @@ public class MangaServiceImpl implements MangaService{
 
 	@Override
 	public void delete(Long id) {
+		verifyIfMangaExist(id);
 		repository.deleteById(id);
+	}
+	
+	private void verifyIfMangaExist(Long id) {
+		Optional<Manga> opt = repository.findById(id);
+		if (!opt.isPresent()) {
+			throw new ResourceNotFoundException("Resouce not found with id" + id);
+		}
 	}
 
 }

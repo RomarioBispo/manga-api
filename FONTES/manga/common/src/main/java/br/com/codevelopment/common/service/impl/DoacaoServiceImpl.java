@@ -6,7 +6,9 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import br.com.codevelopment.common.domain.entity.Doacao;
+import br.com.codevelopment.common.domain.entity.Manga;
 import br.com.codevelopment.common.domain.repository.DoacaoRepository;
+import br.com.codevelopment.common.error.ResourceNotFoundException;
 import br.com.codevelopment.common.service.contract.DoacaoService;
 
 @Service
@@ -24,6 +26,7 @@ public class DoacaoServiceImpl implements DoacaoService {
 
 	@Override
 	public Doacao update(Long id, Doacao doacao) {
+		verifyIfDoacaoExist(id);
 		Optional<Doacao> opt = repository.findById(id);
 		Doacao toSave = new Doacao();
 		if (opt.isPresent()) {
@@ -43,12 +46,21 @@ public class DoacaoServiceImpl implements DoacaoService {
 
 	@Override
 	public Doacao findById(Long id) {
+		verifyIfDoacaoExist(id);
 		return repository.findById(id).get();
 	}
 
 	@Override
 	public void delete(Long id) {
+		verifyIfDoacaoExist(id);
 		repository.deleteById(id);
+	}
+	
+	private void verifyIfDoacaoExist(Long id) {
+		Optional<Doacao> opt = repository.findById(id);
+		if (!opt.isPresent()) {
+			throw new ResourceNotFoundException("Resouce not found with id" + id);
+		}
 	}
 
 }

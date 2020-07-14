@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.codevelopment.common.domain.entity.Usuario;
 import br.com.codevelopment.common.domain.repository.UsuarioRepository;
+import br.com.codevelopment.common.error.ResourceNotFoundException;
 import br.com.codevelopment.common.service.contract.UsuarioService;
 
 @Service
@@ -25,6 +26,7 @@ public class UsuarioServiceImpl implements UsuarioService{
 
 	@Override
 	public Usuario update(Long id, Usuario usuario) {
+		verifyIfUserExist(id);
 		Optional<Usuario> opt = repository.findById(id);
 		Usuario toSave = new Usuario();
 		if (opt.isPresent()) {
@@ -51,13 +53,21 @@ public class UsuarioServiceImpl implements UsuarioService{
 
 	@Override
 	public Usuario findById(Long id) {
-		return repository.findById(id).get();
+		verifyIfUserExist(id);
+		return repository.findById(id).get(); 
 	}
 
 	@Override
 	public void delete(Long id) {
-		Optional<Usuario> u = repository.findById(id);
-		repository.delete(u.get());
+		verifyIfUserExist(id);
+		repository.delete(repository.findById(id).get());
+	}
+	
+	private void verifyIfUserExist(Long id) {
+		Optional<Usuario> opt = repository.findById(id);
+		if (!opt.isPresent()) {
+			throw new ResourceNotFoundException("Resouce not found with id" + id);
+		}
 	}
 
 }
