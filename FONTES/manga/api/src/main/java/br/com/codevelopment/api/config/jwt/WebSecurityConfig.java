@@ -1,4 +1,4 @@
-package br.com.codevelopment.api.config;
+package br.com.codevelopment.api.config.jwt;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -17,6 +17,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		httpSecurity.csrf().disable().authorizeRequests()
 			.antMatchers("/api/v1/usuario/hello").permitAll()
 			.antMatchers(HttpMethod.POST, "/api/v1/usuario/login").permitAll()
+			.antMatchers(HttpMethod.GET,
+					"/v2/api-docs",
+                    "/configuration/ui",
+                    "/swagger-resources/**",
+                    "/configuration/security",
+                    "/swagger-ui.html",
+                    "/webjars/**").permitAll()
 			.anyRequest().authenticated()
 			.and()
 			

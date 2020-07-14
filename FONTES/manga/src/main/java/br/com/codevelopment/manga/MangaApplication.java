@@ -9,5 +9,4 @@ public class MangaApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(MangaApplication.class, args);
 	}
-
 }

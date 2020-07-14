@@ -1,4 +1,4 @@
-package br.com.codevelopment.api.config;
+package br.com.codevelopment.api.config.jwt;
 
 import java.io.IOException;
 import java.util.Collections;
