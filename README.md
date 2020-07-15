@@ -1,28 +1,18 @@
 # Simple manga API
 
-A simple manga API using spring boot to knowledge purposes. I consider this project only to know about jwt, error handling and unit tests using spring boot to build a simple API.
+A simple manga API using spring boot to knowledge purposes.
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+This project show features which a minimal API must have on my own opinion.
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
-
-```
-Give examples
-```
+You will need a java version installed (11 or later) and a IDE to run locally. (STS or Eclipse EE).
 
 ### Installing
 
 I'll give you a hand a tell how to install this project on you own machine.
-
-Disclaimer
-
-```
-You will need a java version installed (11 or later) and a IDE to run locally. (STS or Eclipse EE)
-```
 
 First, clone the project to your local storage.
 
