@@ -6,7 +6,6 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import br.com.codevelopment.common.domain.entity.Doacao;
-import br.com.codevelopment.common.domain.entity.Manga;
 import br.com.codevelopment.common.domain.repository.DoacaoRepository;
 import br.com.codevelopment.common.error.ResourceNotFoundException;
 import br.com.codevelopment.common.service.contract.DoacaoService;
